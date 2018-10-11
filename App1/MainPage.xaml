@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="WishDish.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WishDish"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" MinHeight="700">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="Auto" Width="auto" RequestedTheme="Default">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="100" MaxWidth="100"/>
+            <ColumnDefinition MinWidth="350" MaxWidth="350"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Date/Time" Margin="5,5,5,5" HorizontalAlignment="Left" VerticalAlignment="Center"  />
+
+        <CalendarDatePicker Grid.Row="0" Grid.Column="1" x:Name="searchDatePicker" HorizontalAlignment="Left" Margin="5,5,5,5" VerticalAlignment="Top" Width="296"/>
+        <TimePicker Grid.Row="1" Grid.Column="1" x:Name="searchTimePicker" HorizontalAlignment="Left" Margin="5,5,5,5" VerticalAlignment="Top" Width="296" MinuteIncrement="30"/>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Party Size" Margin="5,5,5,5" HorizontalAlignment="Left" VerticalAlignment="Center"  />
+        <ComboBox Grid.Row="2" Grid.Column="1" x:Name="partySizePicker" Margin="5,5,5,5" ItemsSource="{x:Bind partySizes}" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="296" MaxWidth="296"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Location" Margin="5,5,5,5" HorizontalAlignment="Left" VerticalAlignment="Center"  />
+        <ComboBox Grid.Row="3" Grid.Column="1" x:Name="diningLocationPicker" Margin="5,5,5,5" ItemsSource="{x:Bind diningLocations}" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="296" MaxWidth="296"/>
+
+        <Button Grid.Row="4"  Grid.Column="1" x:Name="button" Content="Search" HorizontalAlignment="Left" Margin="5,5,5,5" VerticalAlignment="Top" Click="button_Click"/>
+        <Border Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="Gray" BorderThickness="4">
+            <Pivot x:Name="offersPivot" Title="Availability" >
+                <Pivot.RightHeader>
+                    <CommandBar Background="Transparent">
+                        <AppBarButton x:Name="closeOfferButton" Icon="ClosePane"/>
+                    </CommandBar>
+                </Pivot.RightHeader>
+            </Pivot>
+        </Border>
+    </Grid>
+</Page>
